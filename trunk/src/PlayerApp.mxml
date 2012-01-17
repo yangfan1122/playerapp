@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+							xmlns:s="library://ns.adobe.com/flex/spark"
+							width="480" height="854" applicationDPI="160"
+							firstView="views.PlayerAppView"
+							splashScreenImage="@Embed('assets/logo.jpg')"
+							splashScreenScaleMode="letterbox">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<!--
+	<s:navigationContent>
+		<s:Button label="歌秀首页" click="navigator.popToFirstView()"/>
+	</s:navigationContent>
+	-->
+	
+</s:ViewNavigatorApplication>
