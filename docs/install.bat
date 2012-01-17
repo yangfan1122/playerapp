@@ -1,0 +1,1 @@
+adb install -r F:\flex_workspace\PlayerApp\air\PlayerApp.apk
