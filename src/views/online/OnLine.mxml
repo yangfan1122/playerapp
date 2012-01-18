@@ -33,7 +33,6 @@
 	<s:layout>
 		<s:VerticalLayout paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10"/>
 	</s:layout>
-	
 	<s:Label id="wholeTag" width="100%" height="40" text="全部"/>
 	
 	<s:Line x="0" y="0" width="100%">
@@ -41,7 +40,6 @@
 			<s:SolidColorStroke color="0x808080" weight="1"/>
 		</s:stroke>
 	</s:Line>
-	
 	<s:Label id="albumTag" width="100%" height="40" text="专辑"/>
 	
 	<s:Line x="0" y="0" width="100%">
@@ -49,7 +47,6 @@
 			<s:SolidColorStroke color="0x808080" weight="1"/>
 		</s:stroke>
 	</s:Line>
-	
 	<s:Label id="singerTag" width="100%" height="40" text="歌手"/>
 	
 </s:View>
