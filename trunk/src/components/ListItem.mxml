@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
-		xmlns:s="library://ns.adobe.com/flex/spark"
-		width="100%" height="100%" title="ListItem">
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 width="100%" height="50">
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
+
+	<fx:Script>
+		<![CDATA[
+			public var songInfo:Object = {};//歌曲信息
+		]]>
+	</fx:Script>
 	
-	<s:HGroup>
-		
-		<s:Image width="40" height="40"/>
+	<s:HGroup width="100%" height="100%" verticalAlign="top">
+		<s:Image id="leftImg" width="50" height="50"/>
 		
 		<s:VGroup>
-			<s:Label/>
-			<s:Label/>
+			<s:Label id="titleLabel"/>
+			<s:Label id="singerLabel"/>
 		</s:VGroup>
 		
-		<s:Image/>
-		
+		<s:Image id="menuBtn"/>
 	</s:HGroup>
 	
-	
-</s:View>
+</s:Group>

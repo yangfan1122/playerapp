@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark"
-		actionBarVisible="true" title="Whole">
+		actionBarVisible="true" title="Whole" creationComplete="init()">
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
+
+	<fx:Script>
+		<![CDATA[
+			import com.yf.playerapp.statics.Statics;
+			
+			import components.ListItem;
+			import components.PlayPanel;
+			
+			import views.PlayerAppView;
+			
+			private var playPanel:PlayPanel = new PlayPanel();
+			private var p:PlayerAppView = new PlayerAppView();
+			private var tempGroup:Group = new Group();
+			
+			private function init():void
+			{
+				tempGroup = p.getElementAt(0) as Group;
+				tempGroup.removeAllElements();
+				tempGroup.addElement(playPanel);
+				
+				addItems();
+			}
+			
+			private function addItems():void
+			{
+				var len:int = Statics.songListForTest.length;
+				for(var i:int=0; i<len; i++)
+				{
+					var listItem:ListItem = new ListItem();	
+					listItem.songInfo = Statics.songListForTest[i]; 
+					listItem.leftImg.source = Statics.songListForTest[i].img;
+					listItem.titleLabel.text = Statics.songListForTest[i].title;
+					listItem.singerLabel.text = Statics.songListForTest[i].singer;
+					listContainer.addElement(listItem);
+					listItem.y = (listItem.height + 5)*i;
+					listItem.addEventListener(MouseEvent.CLICK, itemClickHandler);
+				}
+			}
+			
+			
+			private function itemClickHandler(event:MouseEvent):void
+			{
+				playPanel.playHandler(event.currentTarget.songInfo);
+			}
+
+		]]>
+	</fx:Script>
+
+	<s:layout>
+		<s:VerticalLayout paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" />
+	</s:layout>
 	
-	<s:Label text="online whole"/>
-	
+	<s:Scroller width="100%" height="100%">
+		<s:Group id="listContainer" width="100%" height="100%" />
+	</s:Scroller>
+
 </s:View>
