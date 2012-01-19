@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
 		xmlns:s="library://ns.adobe.com/flex/spark"
-		actionBarVisible="true" title="Whole" creationComplete="init()">
+		actionBarVisible="true" title="全部" creationComplete="init()">
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
@@ -15,17 +15,26 @@
 			
 			import views.PlayerAppView;
 			
-			private var playPanel:PlayPanel = new PlayPanel();
+			private var playPanel:PlayPanel;
 			private var p:PlayerAppView = new PlayerAppView();
 			private var tempGroup:Group = new Group();
 			
 			private function init():void
 			{
+				//this.title = String(p.getElementAt(0));//playerContainer
+
 				tempGroup = p.getElementAt(0) as Group;
-				tempGroup.removeAllElements();
-				tempGroup.addElement(playPanel);
+				try
+				{
+					playPanel = tempGroup.getElementAt(0) as PlayPanel;
+				}
+				catch(error:Error)
+				{
+					this.title = (p.getElementAt(0) as Group).numElements.toString();//0
+				}
 				
 				addItems();
+				
 			}
 			
 			private function addItems():void
