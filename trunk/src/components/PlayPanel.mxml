@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
 		 xmlns:s="library://ns.adobe.com/flex/spark"
-		 width="100%" height="40" creationComplete="main()">
+		 width="100%" height="50" creationComplete="main()">
 	<fx:Declarations>
 		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
 	</fx:Declarations>
 
 	<s:HGroup width="100%" height="100%" paddingBottom="5" paddingLeft="5" paddingRight="5"
-			  paddingTop="5">
+			  paddingTop="5" verticalAlign="top">
 		
 		<!-- image -->
 		<s:Image id="songImage" width="50" height="50"/>
@@ -21,7 +21,10 @@
 				
 				<!-- 按钮 -->
 				<s:HGroup>
-					
+					<s:Button id="prevBtn" label="|{" />
+					<s:Button id="playBtn" label="}" />
+					<s:Button id="pauseBtn" label="||" />
+					<s:Button id="nextBtn" label="}|" />
 				</s:HGroup>
 				
 				<!-- progress -->

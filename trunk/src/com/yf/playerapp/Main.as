@@ -9,5 +9,9 @@ public function main():void
 }
 public function playHandler(_info:Object):void
 {
+	songImage.source = _info.img;
+	songText.text = _info.title + " - " + _info.singer;
+	
+	
 	play.playHandler(_info);
 }
