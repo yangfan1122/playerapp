@@ -35,6 +35,7 @@
 			
 		</s:VGroup>
 		
+		<s:Label id="panelTest" />
 		
 	</s:HGroup>
 
