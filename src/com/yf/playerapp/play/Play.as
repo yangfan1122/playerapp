@@ -12,12 +12,15 @@ package com.yf.playerapp.play
 		
 		
 		private var url:String;
-		private var song:SoundChannel;
+		private var song:SoundChannel = new SoundChannel();
 		public var message:String;
 		
 		private var request:URLRequest;
 		private var soundFactory:Sound;
 		private var loading:Boolean = false; //是否正在加载，加载完毕和io错误都要置成false。
+		private var pausePosition:int = 0;
+		public var btns:Array = [];//播 暂 上 下
+		public var state:int = 0; //0初始化，1播，2暂停
 		
 		public function Play() 
 		{
@@ -38,6 +41,8 @@ package com.yf.playerapp.play
 			soundFactory.addEventListener(ProgressEvent.PROGRESS, progressHandler);
 			soundFactory.load(request);
 			song = soundFactory.play();
+			
+			state = 1;
 		}
 		
 		
@@ -57,7 +62,7 @@ package com.yf.playerapp.play
 		}
 		
 		/**
-		 * 
+		 * 过程
 		 * @param event
 		 * 
 		 */		
@@ -72,12 +77,10 @@ package com.yf.playerapp.play
 			dispatchEvent(new Event("senD"));
 		}
 		
-		
-		
-		
-		
-		
-		
+		/**
+		 * 强制停止 
+		 * 
+		 */		
 		private function stopHandler():void
 		{
 			song.stop();
@@ -89,11 +92,50 @@ package com.yf.playerapp.play
 		
 		
 		
+		/**
+		 * 暂停 
+		 * 
+		 */
+		public function pauseHandler():void
+		{
+			song.removeEventListener(Event.SOUND_COMPLETE, soundCompleteHandler);
+			
+			pausePosition = song.position;
+			song.stop();
+			
+			btns[0].visible = true;
+			btns[1].visible = false;
+			
+			state = 2;
+		}
+		
+		/**
+		 * 恢复 
+		 * 
+		 */		
+		public function resumeHandler():void
+		{
+			song = soundFactory.play(pausePosition);
+			song.addEventListener(Event.SOUND_COMPLETE, soundCompleteHandler);
+			
+			btns[0].visible = false;
+			btns[1].visible = true;
+		}
 		
 		
-		
-		
-		
+		/**
+		 * 播放结束 
+		 * @param event
+		 * 
+		 */		
+		private function soundCompleteHandler(event:Event):void
+		{
+			btns[0].visible = true;
+			btns[1].visible = false;
+			state = 0;
+			
+			song.removeEventListener(Event.SOUND_COMPLETE, soundCompleteHandler);
+		}
 		
 		
 		

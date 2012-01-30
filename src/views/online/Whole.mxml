@@ -21,20 +21,8 @@
 			
 			private function init():void
 			{
-				//this.title = String(p.getElementAt(0));//playerContainer
-
-				tempGroup = p.getElementAt(0) as Group;
-				try
-				{
-					playPanel = tempGroup.getElementAt(0) as PlayPanel;
-				}
-				catch(error:Error)
-				{
-					this.title = (p.getElementAt(0) as Group).numElements.toString();//0
-				}
-				
+				playPanel = new PlayPanel();
 				addItems();
-				
 			}
 			
 			private function addItems():void
@@ -53,10 +41,22 @@
 				}
 			}
 			
-			
+			/**
+			 * 点列表歌曲，播放
+			 * @param event
+			 * 
+			 */	
 			private function itemClickHandler(event:MouseEvent):void
 			{
-				playPanel.playHandler(event.currentTarget.songInfo);
+				try
+				{
+					playPanel.playHandler(event.currentTarget.songInfo);
+				}
+				catch(error:Error)
+				{
+					this.title = error +" / "+ String(playPanel);
+				}
+				
 			}
 
 		]]>
