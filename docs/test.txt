@@ -1,0 +1,6 @@
+import components.Test;
+private var test:Test = new Test();
+
+addElement(test);
+
+test.AlertMain();
