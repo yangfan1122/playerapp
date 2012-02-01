@@ -36,11 +36,10 @@
 				if(event.target.label == "首页")
 				{
 					// Switch to the first section in the application.
-					tvna.tabbedNavigator.selectedIndex = 0;
+					tvna.selectedIndex = 0;
 					// Switch to the first view in the section.
-					ViewNavigator(tvna.tabbedNavigator.selectedNavigator).popToFirstView();
+					ViewNavigator(tvna.selectedNavigator).popToFirstView();
 				}
-					
 				if(event.target.label == "退出")
 				{
 					NativeApplication.nativeApplication.exit();	
@@ -57,11 +56,11 @@
 	<s:Group id="playerContainer" width="100%" height="60" />
 
 	<!-- main -->
-	<s:TabbedViewNavigatorApplication id="tvna" width="100%" height="100%">
-		<s:ViewNavigator label="在线音乐" firstView="views.online.OnLine"/>
-		<s:ViewNavigator label="我的音乐" firstView="views.my.MyMusic"/>
-		<s:ViewNavigator label="本地音乐" firstView="views.local.Local"/>
-	</s:TabbedViewNavigatorApplication>
+	<s:TabbedViewNavigator id="tvna" width="100%" height="100%">
+		<s:ViewNavigator label="在线音乐" width="100%" firstView="views.online.OnLine"/>
+		<s:ViewNavigator label="我的音乐" width="100%" firstView="views.my.MyMusic"/>
+		<s:ViewNavigator label="本地音乐" width="100%" firstView="views.local.Local"/>
+	</s:TabbedViewNavigator>
 	
 	<!-- 菜单 -->
 	<s:viewMenuItems>

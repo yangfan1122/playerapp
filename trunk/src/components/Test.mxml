@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		creationComplete="init()" title="Test">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			private function init():void
+			{
+				frmPUA.displayPopUp=false;
+			}
+			
+			public function AlertMain(_info:Object):void
+			{
+				frmPUA.displayPopUp=true;
+				testLabel.text = _info.toString();
+			}
+		]]>
+	</fx:Script>
+	
+	<s:PopUpAnchor id="frmPUA" width="100%" height="500" popUpPosition="below" styleName="popUpForm">
+		<s:BorderContainer width="100%" height="500">            
+			<s:layout>
+				<s:VerticalLayout paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"/>
+			</s:layout>
+
+			<s:VGroup>                                                                
+				<s:TextArea id="testLabel" width="100%" height="400" />
+				<s:Button label="CLOSE" click="frmPUA.displayPopUp=false"/>
+			</s:VGroup>                
+		</s:BorderContainer>                        
+	</s:PopUpAnchor>
+	
+</s:View>
