@@ -1,7 +1,16 @@
+import com.yf.playerapp.DataDispatch;
+import com.yf.playerapp.event.CustomizeEvent;
 import com.yf.playerapp.play.Play;
+import com.yf.playerapp.statics.Events;
+
+import components.Test;
 
 import flash.events.Event;
 import flash.events.MouseEvent;
+
+import mx.core.IVisualElement;
+
+private var test:Test = new Test();
 
 private var play:Play;
 private var info:Object = new Object();
@@ -9,20 +18,53 @@ private var info:Object = new Object();
 public function main():void
 {
 	pauseBtn.visible = false;
+	this.addElement(test);
 	
 	playBtn.addEventListener(MouseEvent.CLICK, playBtnHandler);
 	pauseBtn.addEventListener(MouseEvent.CLICK, pauseBtnBtnHandler);
 	
+	DataDispatch.getInstance().addEventListener(Events.SONG_ID, getSongIdHandler);
+	
 	play = new Play();
-	play.btns = [playBtn, pauseBtn, prevBtn, nextBtn];
+	try
+	{
+		this.addElement(play as IVisualElement);
+	}
+	catch(error:Error)
+	{
+		//test.AlertMain(error);
+		throw error;
+	}
+	
+	play.displayObjectsArr = [playBtn, pauseBtn, prevBtn, nextBtn, proBarDownload, proBarPlaying, proBarContainer];
 }
-public function playHandler(_info:Object):void
+
+/**
+ * 监听歌曲id 
+ * @param event
+ * 
+ */
+private function getSongIdHandler(event:CustomizeEvent):void
+{
+	playHandler(event.customizeObj);
+}
+
+
+
+
+
+/**
+ * 播放歌曲，传递歌曲信息参数 
+ * @param _info
+ * 
+ */
+private function playHandler(_info:Object):void
 {
 	info = _info;
 	
 	songImage.source = _info.img;
-	songText.text = _info.title + " - " + _info.singer;
-	
+	songText.text = _info.title;
+	singerText.text = _info.singer;
 	
 	play.playHandler(_info);
 }
@@ -47,5 +89,5 @@ private function playBtnHandler(event:MouseEvent):void
  */
 private function pauseBtnBtnHandler(event:MouseEvent):void
 {
-	
+	play.pauseHandler();
 }

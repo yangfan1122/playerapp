@@ -9,9 +9,12 @@
 	<fx:Script>
 		<![CDATA[
 			import com.yf.playerapp.statics.Statics;
+			import com.yf.playerapp.DataDispatch;
+			import com.yf.playerapp.statics.Events;
 			
 			import components.ListItem;
 			import components.PlayPanel;
+			import components.Test;
 			
 			import views.PlayerAppView;
 			
@@ -19,10 +22,14 @@
 			private var p:PlayerAppView = new PlayerAppView();
 			private var tempGroup:Group = new Group();
 			
+			private var test:Test = new Test();
+			
 			private function init():void
 			{
 				playPanel = new PlayPanel();
 				addItems();
+				
+				addElement(test);
 			}
 			
 			private function addItems():void
@@ -50,12 +57,17 @@
 			{
 				try
 				{
-					playPanel.playHandler(event.currentTarget.songInfo);
+					//playPanel.playHandler(event.currentTarget.songInfo);
+					//test.AlertMain(event.currentTarget.songInfo.img);
+					DataDispatch.getInstance().dispatchEventHandler(Events.SONG_ID, event.currentTarget.songInfo);
 				}
 				catch(error:Error)
 				{
-					this.title = error +" / "+ String(playPanel);
+					test.AlertMain(error + " //// "+playPanel);
 				}
+				
+				
+				
 				
 			}
 
@@ -65,9 +77,9 @@
 	<s:layout>
 		<s:VerticalLayout paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" />
 	</s:layout>
-	
+
 	<s:Scroller width="100%" height="100%">
 		<s:Group id="listContainer" width="100%" height="100%" />
 	</s:Scroller>
-
+	
 </s:View>
