@@ -10,6 +10,7 @@ package com.yf.playerapp.play
 	import flash.events.TimerEvent;
 	
 	import com.yf.playerapp.Test;
+	import com.yf.playerapp.statics.Statics;
 	
 	public class Play extends Group
 	{
@@ -71,7 +72,7 @@ package com.yf.playerapp.play
 			loading = false;
 			
 			soundFactory.removeEventListener(ProgressEvent.PROGRESS, progressHandler);
-			displayObjectsArr[4].width = 200;
+			displayObjectsArr[4].width = Statics.panelWidth;
 			//displayObjectsArr[2].label = "completeHandler";
 			
 			sendMessage("completeHandler: " + event);
@@ -97,9 +98,9 @@ package com.yf.playerapp.play
 			timer.start();
 			
 			this.addElement(test);
-			test.test1(Transfer.setWidth(event.bytesLoaded, event.bytesTotal, 200));
+			test.test1(Transfer.setWidth(event.bytesLoaded, event.bytesTotal, Statics.panelWidth));
 			
-			displayObjectsArr[4].width = Transfer.setWidth(event.bytesLoaded, event.bytesTotal, 200);//下载
+			displayObjectsArr[4].width = Transfer.setWidth(event.bytesLoaded, event.bytesTotal, Statics.panelWidth);//下载
 		}
 		
 		/**
@@ -124,7 +125,7 @@ package com.yf.playerapp.play
 			
 			//_totalTimeTxt.text = Transfer.transferTimeHandler(duration);//时间
 			
-			displayObjectsArr[5].width = Transfer.setWidth(now, duration, 200); //播放条
+			displayObjectsArr[5].width = Transfer.setWidth(now, duration, Statics.panelWidth); //播放条
 
 			/*
 			//缓冲提示
@@ -210,8 +211,8 @@ package com.yf.playerapp.play
 		 */		
 		private function progressBarHandler(event:MouseEvent):void
 		{
-			//272:事件对象相对于舞台的x位置!!
-			goto(Transfer.barTransfer((mouseX - 272), displayObjectsArr[6].width, soundFactory.length));
+			//mouseX - 事件对象相对于舞台的x位置!!
+			goto(Transfer.barTransfer((mouseX - 188), displayObjectsArr[6].width, soundFactory.length));
 		}
 
 		

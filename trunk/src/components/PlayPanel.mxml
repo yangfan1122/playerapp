@@ -12,15 +12,13 @@
 		<!-- image -->
 		<s:Image id="songImage" width="50" height="50"/>
 		
-		<s:VGroup width="100%" height="100%">
-			
-			<!-- name -->
+		<!-- title singer -->
+		<s:VGroup width="120" height="100%">
 			<s:Label id="songText" height="15"/>
 			<s:Label id="singerText" height="15"/>
-			
 		</s:VGroup>
 		
-		<s:VGroup width="100%" height="100%">
+		<s:VGroup id="panelRigthSide" width="100%" height="100%">
 			
 			<!-- 按钮 -->
 			<s:Group>
@@ -30,8 +28,8 @@
 				<s:Button id="nextBtn" label="}|" x="70" />
 			</s:Group>
 			
-			<!-- progress bar -->
-			<s:Group id="proBarContainer" width="200">
+			<!-- progress & bar -->
+			<s:Group id="proBarContainer">
 				<!-- Border -->
 				<s:Rect id="proBarBorder" x="0" y="0" width="100%" height="5" alpha="1">
 					<s:stroke>  
