@@ -3,7 +3,7 @@
 							xmlns:s="library://ns.adobe.com/flex/spark"
 							width="480" height="854" applicationDPI="160"
 							firstView="views.PlayerAppView"
-							splashScreenImage="@Embed('assets/logo.jpg')"
+							splashScreenImage="@Embed('assets/welcome.jpg')"
 							splashScreenScaleMode="letterbox">
 	
 	<!-- height : 854 764 -->

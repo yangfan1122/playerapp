@@ -16,7 +16,7 @@ package com.yf.playerapp.statics
 		/**
 		 * demo数据
 		 */		
-		public static var songListForTest:Array = [
+		public static const songListForTest:Array = [
 			{id:"01", mp3:"http://172.21.39.117:8888/group1/M00/01/13/rBUndU770P-k-oGlACFf7JPZdOI266.mp3", title:"怒放的生命", singer:"汪峰", img:"http://172.21.38.232:20010/images/add-friend-ads.jpg"},
 			{id:"02", mp3:"http://172.21.39.117:8888/group1/M00/01/13/rBUndU770iHbqssCACFEFAIXQJM815.mp3", title:"把悲伤留给自己", singer:"陈升", img:"http://172.21.38.232:20010/images/add-friend-ads.jpg"},
 			{id:"03", mp3:"http://172.21.39.117:8888/group1/M00/01/13/rBUndU7-m-mzrwFCAEQKesulp2o478.mp3", title:"分手快乐", singer:"梁静茹", img:"http://172.21.38.232:20030/user/avatar/min/100808"},
@@ -25,6 +25,8 @@ package com.yf.playerapp.statics
 			{id:"06", mp3:"http://172.21.39.117:8888/group1/M00/01/13/rBUndU7-m-mzrwFCAEQKesulp2o478.mp3", title:"分手快乐", singer:"梁静茹", img:"http://172.21.38.232:20030/user/avatar/min/100808"}
 		];
 		
+		
+		public static const panelWidth:uint = 102;//控制面板右侧按钮和进度条部分宽
 		
 		
 		

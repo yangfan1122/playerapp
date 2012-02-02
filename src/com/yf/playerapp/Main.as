@@ -2,6 +2,7 @@ import com.yf.playerapp.DataDispatch;
 import com.yf.playerapp.event.CustomizeEvent;
 import com.yf.playerapp.play.Play;
 import com.yf.playerapp.statics.Events;
+import com.yf.playerapp.statics.Statics;
 
 import components.Test;
 
@@ -19,6 +20,9 @@ public function main():void
 {
 	pauseBtn.visible = false;
 	this.addElement(test);
+	
+	//panelRigthSide.width = Statics.panelWidth;
+	proBarContainer.width = Statics.panelWidth;
 	
 	playBtn.addEventListener(MouseEvent.CLICK, playBtnHandler);
 	pauseBtn.addEventListener(MouseEvent.CLICK, pauseBtnBtnHandler);
